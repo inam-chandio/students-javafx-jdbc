@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.projecttask.controllers.MainController"
+            prefHeight="400.0" prefWidth="600.0">
+    <!-- Menu Bar -->
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="About" onAction="#handleAbout"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+
+    <!-- Center content with split pane -->
+    <center>
+        <SplitPane dividerPositions="0.4">
+            <items>
+                <!-- Left side: Form for adding/editing courses -->
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="Course Management" style="-fx-font-weight: bold"/>
+                    <Label text="Course ID:"/>
+                    <TextField fx:id="courseIdField"/>
+                    <Label text="Course Name:"/>
+                    <TextField fx:id="courseNameField"/>
+                    <Label text="Instructor:"/>
+                    <TextField fx:id="instructorField"/>
+                    <HBox spacing="10">
+                        <Button fx:id="addButton" text="Add" onAction="#handleAddCourse"/>
+                        <Button fx:id="editButton" text="Edit" onAction="#handleEditCourse"/>
+                        <Button fx:id="removeButton" text="Remove" onAction="#handleRemoveCourse"/>
+                        <Button text="Clear" onAction="#handleClearFields"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Right side: List view of courses -->
+                <ListView fx:id="courseListView"/>
+            </items>
+        </SplitPane>
+    </center>
+
+    <!-- Status Bar -->
+    <bottom>
+        <HBox>
+            <padding>
+                <Insets top="5" right="10" bottom="5" left="10"/>
+            </padding>
+            <Label fx:id="statusLabel" text="Status: Ready"/>
+        </HBox>
+    </bottom>
+</BorderPane>
